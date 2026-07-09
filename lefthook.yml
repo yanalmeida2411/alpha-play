@@ -1,0 +1,16 @@
+# 1. Verifica mensagem de commit
+commit-msg:
+  commands:
+    lint-commit:
+      run: yarn commitlint --edit {1}
+      root: ".tooling/"
+
+# 2. Verifica código antes de commitar
+pre-commit:
+  parallel: true
+  commands:
+
+    frontend-lint:
+      glob: "frontend/**/*.{ts,tsx,js,json}"
+      root: "frontend/"
+      run: yarn lint

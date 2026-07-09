@@ -26,7 +26,6 @@ export const PersonalDataSchema = v.pipe(
       v.pipe(
         v.string(),
         v.trim(),
-        v.check((val) => val === "" || v.safeParse(v.string([v.email()]), val).success, "O e-mail inserido é inválido"),
         v.check((val) => val === "" || /@.*\.(com|com\.br)$/.test(val), "O e-mail inserido é inválido"),
         v.maxLength(50, "O campo e-mail deve permitir no máximo 50 caracteres")
       )
